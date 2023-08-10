@@ -21,6 +21,7 @@ package ristretto
 
 import (
 	"errors"
+	"fmt"
 	"sync"
 	"time"
 	"unsafe"
@@ -499,6 +500,7 @@ func (c *Cache) processItems() {
 					c.onReject(i)
 				}
 				for _, victim := range victims {
+					fmt.Println("victim: ", victim.Key, " ", victim.Value)
 					victim.Conflict, victim.Value = c.store.Del(victim.Key, 0)
 					onEvict(victim)
 				}
