@@ -500,6 +500,7 @@ func (c *Cache) processItems() {
 					c.onReject(i)
 				}
 				fmt.Println("victims: ", victims)
+
 				for _, victim := range victims {
 					fmt.Println("victim: ", victim.Key, " ", victim.Value)
 					victim.Conflict, victim.Value = c.store.Del(victim.Key, 0)
